@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
         <Provider>
           <div className="whole-page flex flex-grow-1 bg-blue-700">
             <Nav />
-            <div className="bg-slate-100 w-full h-screen content-part mt-2 px-8 py-4 rounded-xl">
+            <div className="bg-slate-50 w-full h-screen content-part mt-2 px-8 py-4 rounded-t-xl">
               {children}
             </div>
           </div>

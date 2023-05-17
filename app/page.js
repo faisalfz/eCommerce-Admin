@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 import { useState, useEffect } from "react";
@@ -18,15 +18,14 @@ const Home = () => {
     setUpProviders();
   }, []);
 
-  console.log(session, "Hello")
-
+  console.log(session, "Hello");
 
   if (!session) {
     return (
       <>
         <div className="w-full h-screen flex justify-center items-center bg-blue-900">
           <div className="text-center w-full">
-          {providers &&
+            {providers &&
               Object.values(providers).map((provider) => (
                 <button
                   type="button"
@@ -37,7 +36,6 @@ const Home = () => {
                   SignIn with Google
                 </button>
               ))}
-              
           </div>
         </div>
       </>
@@ -45,11 +43,15 @@ const Home = () => {
   } else {
     return (
       <>
-        
-        <div className="bg-slate-100 w-full h-screen content-part mt-2 px-8 py-4 rounded-xl">
-        <h2>Welcome to {session.user.name}</h2>
-        <p>Signed In as {session.user.email}</p>
-        <Image src={session.user.image} width={60} height={60} alt="Hello" className="rounded-full" />
+        <div className="w-full flex justify-between text-2xl ">
+          <h2>Hello {session.user.name}!</h2>
+          <Image
+            src={session.user.image}
+            width={45}
+            height={45}
+            alt="Hello"
+            className="rounded-full"
+          />
         </div>
       </>
     );
