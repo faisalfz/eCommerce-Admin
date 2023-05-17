@@ -45,13 +45,11 @@ const Home = () => {
   } else {
     return (
       <>
-        <div className="whole-page flex flex-grow-1 bg-blue-700" >
-        <Nav />
+        
         <div className="bg-slate-100 w-full h-screen content-part mt-2 px-8 py-4 rounded-xl">
         <h2>Welcome to {session.user.name}</h2>
         <p>Signed In as {session.user.email}</p>
         <Image src={session.user.image} width={60} height={60} alt="Hello" className="rounded-full" />
-        </div>
         </div>
       </>
     );
