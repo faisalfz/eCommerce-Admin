@@ -1,0 +1,35 @@
+[33mcommit 4763fd763f7e0c3fe30444d1a8bc53711b4bf441[m[33m ([m[1;36mHEAD -> [m[1;32madmin-account[m[33m, [m[1;31morigin/admin-account[m[33m)[m
+Author: faisalfz <faisalfiaz40@gmail.com>
+Date:   Sat May 20 05:18:22 2023 +0500
+
+    Added CRUD operations for Products
+
+[33mcommit 582bb166712d125ac9f7e50faee0051eaa86cead[m
+Author: faisalfz <faisalfiaz40@gmail.com>
+Date:   Thu May 18 01:59:42 2023 +0500
+
+    new product form added and successfully sending data to mongoDB
+
+[33mcommit 2db6e7356afe0394e3a1eaff393597bbe3ad5290[m
+Author: faisalfz <faisalfiaz40@gmail.com>
+Date:   Wed May 17 13:33:23 2023 +0500
+
+    nav bar designed, 4 main pages setup, database connected
+
+[33mcommit 2812486aaeef14609a117a0535265cc5629fcb6c[m
+Author: faisalfz <faisalfiaz40@gmail.com>
+Date:   Wed May 17 03:30:01 2023 +0500
+
+    admin sidebar added
+
+[33mcommit 999bba865939d0573115bcb971fccb48a508b579[m
+Author: faisalfz <faisalfiaz40@gmail.com>
+Date:   Mon May 15 23:32:01 2023 +0500
+
+    Initial commit, install dependencies
+
+[33mcommit dbab2ddb64d76eb8347cbd7fb24a850c548b7350[m[33m ([m[1;32mmaster[m[33m)[m
+Author: faisalfz <faisalfiaz40@gmail.com>
+Date:   Mon May 15 19:58:16 2023 +0500
+
+    Initial commit from Create Next App

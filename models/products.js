@@ -14,6 +14,10 @@ const ProductSchema = new Schema({
     type: Number,
     required: [true, "Price is required"],
   },
+  image: {
+    type: String,
+    required: [true, 'Product Image is required']
+  },
 });
 
 const Products = models.Products || model("Products", ProductSchema);

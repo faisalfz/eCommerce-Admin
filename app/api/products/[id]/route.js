@@ -7,7 +7,6 @@ export const GET = async (request, {params}) => {
         await connectToDB()
 
         const products = await Products.find({userId: params._id})
-        // console.log(products, "Hi")
 
         if(!products) return new Response('Products not found', {status:404})
 
@@ -22,8 +21,8 @@ export const GET = async (request, {params}) => {
 
 // PATCH (Update)
 export const PATCH = async (request, {params}) => {
-  const {title, description, price} = await request.json();
-  console.log('Request Data: ', title, description, price)
+  const {title, description, price, image} = await request.json();
+  console.log('Request Data: ', title, description, price, image)
   try {
     await connectToDB();
 
@@ -35,6 +34,7 @@ export const PATCH = async (request, {params}) => {
     existingProducts.title = title;
     existingProducts.description = description;
     existingProducts.price = price;
+    existingProducts.image = image;
 
     await existingProducts.save();
 

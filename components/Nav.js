@@ -17,7 +17,7 @@ const Nav = () => {
   if(session)
   return (
     <>
-      <aside className="nav pt-3 pl-2 text-white text-lg">
+      <aside className="nav pt-3 pl-2 text-white text-lg sticky">
         <Link
           href={"/"}
           className="logo flex items-center gap-1 ml-1 mb-6 text-xl font-medium"

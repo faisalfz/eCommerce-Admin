@@ -13,24 +13,30 @@ const EditProduct = () => {
     title: "",
     description: "",
     price: "",
+    image: "",
   });
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState("");
+  const [imageFile, setImageFile] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
   useEffect(() => {
     const getProductDetails = async () => {
       const response = await fetch(`/api/products/${productId}`);
       const data = await response.json();
-      console.log("Data: ", data);
+      // console.log("Data: ", data);
 
       const productData = data.filter((item) => item._id === productId);
+      const [currentProduct] = productData;
 
-      console.log("Data: ", productData);
+      setImageUrl(currentProduct.image);
 
       setProduct({
-        title: productData[0].title,
-        description: productData[0].description,
-        price: productData[0].price,
+        title: currentProduct.title,
+        description: currentProduct.description,
+        price: currentProduct.price,
+        image: currentProduct.image,
       });
+
     };
 
     if (productId) {
@@ -40,39 +46,72 @@ const EditProduct = () => {
 
   const editProduct = async (e) => {
     e.preventDefault();
-
-    if (!productId) return alert("Missing Product ID");
-
+  
+    let updatedData = {
+      title: product.title,
+      description: product.description,
+      price: product.price,
+      image: product.image,
+    };
+  
+    if (imageFile.size) {
+      // Upload Product Image to Cloudinary
+      const formData = new FormData();
+      formData.append("file", imageFile);
+      formData.append("upload_preset", "ecommerce");
+  
+      try {
+        const imgResponse = await fetch(
+          "https://api.cloudinary.com/v1_1/dswzjjbvf/image/upload",
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+  
+        const data = await imgResponse.json();
+        console.log("Updated Image Data Faisal: ", data.secure_url);
+        const updatedImage = data.secure_url;
+  
+        updatedData.image = updatedImage;
+      } catch (error) {
+        console.log(error);
+        setMessage("Sorry not Updated");
+        return;
+      }
+    }
+  
     try {
       const response = await fetch(`/api/products/${productId}`, {
         method: "PATCH",
-        body: JSON.stringify({
-          title: product.title,
-          description: product.description,
-          price: product.price,
-        }),
+        body: JSON.stringify(updatedData),
       });
+  
       if (response.ok) {
-        setMessage('Product Updated Successfully');
+        setMessage("Product Updated Successfully");
         setTimeout(() => {
-          setMessage('')
+          setMessage("");
+          router.push("/products");
         }, 1500);
-        router.push("/products");
       }
     } catch (error) {
       console.log(error);
-      setMessage('Sorry not Updated');
+      setMessage("Sorry not Updated");
     }
   };
+  
 
   return (
     <>
       <ProductForm
         type={"Update"}
-        products={product}
-        setProducts={setProduct}
+        product={product}
+        setProduct={setProduct}
         handleSubmit={editProduct}
+        setImageFile={setImageFile}
         message={message}
+        imageUrl={imageUrl}
+        setImageUrl={setImageUrl}
       />
     </>
   );

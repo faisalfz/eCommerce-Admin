@@ -2,7 +2,7 @@ import Products from "@/models/products";
 import { connectToDB } from "@/utils/database";
 
 export const POST = async (request) => {
-  const { title, description, price } = await request.json();
+  const { title, description, price, image } = await request.json();
 
   try {
     await connectToDB();
@@ -10,6 +10,7 @@ export const POST = async (request) => {
       title,
       description,
       price,
+      image,
     });
 
     await newProduct.save();
